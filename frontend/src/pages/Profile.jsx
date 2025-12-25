@@ -1,28 +1,16 @@
-// Profile.jsx
-import React, { useState, useEffect } from "react";
-import { jwtDecode } from 'jwt-decode';
+// Profile.jsx - Updated to use Zustand store
+import React, { useEffect } from "react";
+import useUserStore from "../store/User.store";
 import Sidebar from "../components/Sidebar/Sidebar";
 
 const Profile = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // ✅ Get state and actions from Zustand store
+  const { user, loading, loadUser } = useUserStore();
 
+  // ✅ Load user on component mount
   useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("token="))
-      ?.split("=")[1];
-    
-    if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        setUser(decoded);
-      } catch (error) {
-        console.error("Invalid JWT:", error);
-      }
-    }
-    setLoading(false);
-  }, []);
+    loadUser();
+  }, [loadUser]);
 
   const connectLinkedIn = () => {
     const params = new URLSearchParams({
@@ -62,9 +50,8 @@ const Profile = () => {
   }
 
   return (
-   
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12 px-4 flex">
-       <Sidebar/>
+      <Sidebar />
       <div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8 border border-gray-200">
           <div className="text-center mb-8">
