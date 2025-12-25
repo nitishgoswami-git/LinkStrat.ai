@@ -1,9 +1,10 @@
 import React from "react";
-import { ArrowRight, Sparkles, Calendar, Play } from "lucide-react";
-
+import { ArrowRight, Sparkles, Calendar, Play, LogIn } from "lucide-react";
+// import Login from "./Auth/Login";
 const Hero = () => {
   return (
     <div>
+      {/* <Login/> */}
       {" "}
       {/* Hero */}
       <header className="py-20 px-4 text-center">
