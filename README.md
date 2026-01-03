@@ -1,0 +1,1 @@
+# LinkStrat.ai
