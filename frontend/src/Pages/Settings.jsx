@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import Sidebar from "../Components/Sidebar/Sidebar";
 import SidebarCollapsed from "../Components/Sidebar/SidebarCollapsed";
 import MainLayout from "../Layouts/MainLayout";
 
 const Settings = () => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+
   const [isHovered, setIsHovered] = useState(false);
   
   const [groqKey, setGroqKey] = useState("");
@@ -32,23 +31,13 @@ const Settings = () => {
 
   return (
     <MainLayout
-      component1={
-        isCollapsed ? (
-          <SidebarCollapsed 
-            user={user} 
-            isCollapsed={isCollapsed}
-            isHovered={isHovered}
-            onToggle={() => setIsCollapsed(false)}
-            onHover={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-          />
-        ) : (
-          <Sidebar 
-            user={user}
-            isOpen={true}
-            onClose={() => setIsCollapsed(true)}
-          />
-        )
+       component1={
+        <SidebarCollapsed
+          user={user}
+          isHovered={isHovered}
+          onHover={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+        />
       }
       component2={
         <main className="flex-1 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100  sm:p-6  overflow-auto">
