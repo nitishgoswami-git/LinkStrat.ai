@@ -34,6 +34,11 @@ const useUserStore = create(
         isAuthenticated: !!user 
       }),
 
+      // ADD THIS NEW FUNCTION
+      setGroqKey: (hasKey) => set((state) => ({
+        user: state.user ? { ...state.user, groqKey: hasKey } : null
+      })),
+
       logout: async () => {
         const { setUser, clearUser } = get();
         
