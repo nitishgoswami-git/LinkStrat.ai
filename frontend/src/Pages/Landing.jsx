@@ -1,15 +1,24 @@
 import React, { useState } from "react";
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Linkedin, ArrowRight, Sparkles, Calendar, Play } from "lucide-react";
+import { authApi } from "../api/Auth";
 
 const Landing = () => {
   const [topic, setTopic] = useState("");
+  const handleLogin = async ()=>{
+    try{
+      await authApi.login();
+    }
+    catch(err){
+      
+    }
+  }
   return (
     <>
       {/* Navbar */}
       <div className="flex p-2 text-white items-center justify-between">
         <img src="/vite.svg" />
-        <button className="bg-gradient-to-r from-indigo-800 to-blue-600 rounded-xl p-2 flex font-bold items-center gap-2">
+        <button className="bg-blue-600 rounded-xl p-2 flex font-bold items-center justify-around gap-2 active:scale-90 hover:scale-102" onClick={handleLogin}>
           <Linkedin
             fill="white"
             size="30"
