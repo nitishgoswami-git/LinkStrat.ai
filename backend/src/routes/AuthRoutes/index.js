@@ -5,7 +5,7 @@ import { authMiddleware } from "../../middlewares/authMiddleware.js";
 const authRouter = Router();
 
 authRouter.get("/callback", LinkedInController.LoginUser);
-authRouter.get('/me',authMiddleware, LinkedInController.getUser)
-authRouter.post ("/logout", authMiddleware , LinkedInController.Logout);
+authRouter.get("/me", authMiddleware, LinkedInController.getUser);
+authRouter.post("/logout", authMiddleware, LinkedInController.Logout);
 
 export default authRouter;

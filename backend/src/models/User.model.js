@@ -33,6 +33,11 @@ const userSchema = new mongoose.Schema(
     refreshToken: {
       type: String, // If LinkedIn provides refresh tokens
     },
+    groqKey:{
+      type:String,
+      required:false
+
+    },
     tokenExpiresAt: {
       type: Date,
     },

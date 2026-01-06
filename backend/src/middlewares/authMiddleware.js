@@ -26,7 +26,6 @@ export const authMiddleware = async (req, res, next) => {
         message: 'User not found' 
       });
     }
-
     // Attach user to request
     req.user = {
       id: user._id,
@@ -34,6 +33,7 @@ export const authMiddleware = async (req, res, next) => {
       name: user.name,
       linkedinId: user.linkedinId,
       avatar: user.avatar,
+      groqKey : user.groqKey ? true : false
     };
     
     next();
